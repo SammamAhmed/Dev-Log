@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('includes/head') %>
+  <body>
+    <%- include('includes/header') %>
+
+    <main>
+      <h4>Hello <%= user.username %></h4>
+      <a href="/create-post">Create Post</a>
+
+      <% const userPosts = posts.filter(post => post.authorid == user.userid);
+      %> <% const otherPosts = posts.filter(post => post.authorid !=
+      user.userid); %>
+
+      <h5>Your Posts</h5>
+      <% if (userPosts.length == 0) { %>
+      <p>You do not have any posts yet</p>
+      <% } else { %>
+      <ul id="user-posts-list">
+        <% userPosts.forEach(post => { %>
+        <li id="user-post-<%= post.id %>" class="user-post">
+          <a href="/post/<%= post.id %>"><%= post.title %></a> on <%= new
+          Date(post.createdDate).getMonth() + 1 %>/<%= new
+          Date(post.createdDate).getDate() %>/<%= new
+          Date(post.createdDate).getFullYear() %>
+        </li>
+        <% }) %>
+      </ul>
+      <% } %>
+
+      <h5>Community Posts</h5>
+      <% if (otherPosts.length == 0) { %>
+      <p>No community posts yet</p>
+      <% } else { %>
+      <ul id="other-posts-list">
+        <% otherPosts.forEach(post => { %>
+        <li id="other-post-<%= post.id %>" class="other-user-post">
+          <a href="/post/<%= post.id %>"><%= post.title %></a> by
+          <strong><%= post.authorUsername %></strong> on <%= new
+          Date(post.createdDate).getMonth() + 1 %>/<%= new
+          Date(post.createdDate).getDate() %>/<%= new
+          Date(post.createdDate).getFullYear() %>
+        </li>
+        <% }) %>
+      </ul>
+      <% } %>
+    </main>
+
+    <%- include('includes/footer') %>
+  </body>
+</html>
