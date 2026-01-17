@@ -32,6 +32,7 @@
     --code: #42a5f5;
     --preformatted: #fff8dc;
     --disabled: #333;
+    text-decoration: none;
   }
   img,
   video {
@@ -161,8 +162,17 @@ h3 {
   line-height: normal;
   text-decoration: none;
 }
+.btn2 {
+  border: 1px solid var(--accent);
+  background-color: #0d3b66;
+  color: var(--accent-text);
+  padding: 0.5rem 0.9rem;
+  line-height: normal;
+  text-decoration: none;
+}
 .btn:hover {
-  background-color: white;
+  background-color: #0d3b66;
+  text-decoration-color: white;
   border-color: var(--accent-hover);
   cursor: pointer;
 }
@@ -269,6 +279,14 @@ header > nav a[aria-current="true"] {
     line-height: 1;
     text-decoration: underline;
   }
+}
+body > header a,
+body > header a:visited {
+  color: white;
+  text-decoration: none;
+}
+body > header a:hover {
+  text-decoration: none;
 }
 aside,
 details,
